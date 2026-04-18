@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>课程表</title>
     <style>
         * {
@@ -31,26 +33,37 @@
             background: var(--bg-gradient);
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 16px;
+            justify-content: flex-start;
+            padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
             background-attachment: fixed;
+            overflow: hidden;
         }
 
         .container {
             width: 100%;
             max-width: 400px;
             aspect-ratio: 1260 / 2844;
-            max-height: 95vh;
+            max-height: 100vh;
+            height: 100%;
             background: var(--card-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 40px;
-            box-shadow: var(--shadow-md);
+            border-radius: 0;
+            box-shadow: none;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            border: var(--glass-border);
+            border: none;
+        }
+
+        @media (min-width: 420px) {
+            .container {
+                border-radius: 40px;
+                box-shadow: var(--shadow-md);
+                border: var(--glass-border);
+            }
         }
 
         .app-header {
@@ -263,12 +276,13 @@
         .calendar-wrapper {
             flex: 1;
             position: relative;
-            padding: 0 12px 8px;
+            padding: 0 12px env(safe-area-inset-bottom);
             overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
         .week-view {
-            padding-bottom: 20px;
+            padding-bottom: 120px;
         }
 
         .today-classes {
@@ -279,6 +293,9 @@
             -webkit-backdrop-filter: blur(8px);
             border-radius: 14px;
             border: var(--glass-border);
+            position: sticky;
+            bottom: 0;
+            z-index: 10;
         }
 
         [data-theme="dark"] .today-classes {
