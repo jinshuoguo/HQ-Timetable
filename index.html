@@ -282,20 +282,21 @@
         }
 
         .week-view {
-            padding-bottom: 120px;
+            padding-bottom: 12px;
+        }
+
+        .month-view {
+            padding-bottom: 200px;
         }
 
         .today-classes {
-            padding: 14px;
-            margin: 8px 12px 0;
+            padding: 12px;
+            margin: 12px 12px 0;
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-radius: 14px;
             border: var(--glass-border);
-            position: sticky;
-            bottom: 0;
-            z-index: 10;
         }
 
         [data-theme="dark"] .today-classes {
@@ -525,22 +526,28 @@
 
         .time-cell {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 7px;
+            font-size: 6px;
             font-weight: 600;
             color: var(--text-secondary);
-            padding: 3px 0;
+            padding: 4px 0;
             background: rgba(240, 240, 240, 0.5);
             border-radius: 6px;
             border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+            gap: 3px;
         }
 
-        .time-cell-inner {
-            font-size: 6px;
+        .time-slot {
+            font-size: 7px;
+            font-weight: 700;
             color: var(--accent-color);
-            margin-top: 2px;
+        }
+
+        .time-end {
+            font-size: 6px;
         }
 
         [data-theme="dark"] .time-cell {
@@ -550,7 +557,7 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
-        [data-theme="dark"] .time-cell-inner {
+        [data-theme="dark"] .time-slot {
             color: #60a5fa;
         }
 
@@ -1215,6 +1222,12 @@
                     <div class="month-weekday">Sat</div>
                 </div>
                 <div class="month-grid" id="monthGrid"></div>
+                <div class="today-classes" id="todayClasses2">
+                    <div class="today-title">今日课程</div>
+                    <div class="today-date-label" id="todayDateLabel2"></div>
+                    <button class="today-go-btn" onclick="jumpToToday()">跳转今日课程</button>
+                    <div class="today-classes-list" id="todayClassesList2"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -1566,7 +1579,7 @@
                 const timeCell = document.createElement('div');
                 timeCell.className = 'time-cell';
                 const endTime = getEndTime(time);
-                timeCell.innerHTML = '<div>' + time + (endTime ? '<br>' + endTime : '') + '</div>';
+                timeCell.innerHTML = '<div class="time-slot">' + time + '</div><div class="time-end">' + endTime + '</div>';
                 grid.appendChild(timeCell);
 
                 for (let day = 0; day < 7; day++) {
@@ -1588,11 +1601,7 @@
                         cell.classList.add('empty');
                     } else {
                         const parsed = parseCourse(course);
-                        const endTime = getEndTime(time);
-                        cell.innerHTML = '<div class="class-name">' + parsed.name + '</div>' +
-                            (parsed.info ? '<div class="class-info">' + parsed.info + '</div>' : '') +
-                            (parsed.location ? '<div class="class-location">' + parsed.location + '</div>' : '') +
-                            (endTime ? '<div class="class-time">' + endTime + '</div>' : '');
+                        cell.innerHTML = '<div class="class-name">' + parsed.name + '</div>';
                         cell.onclick = (function(p, c, w, t, d) {
                             return function() { openModal(p, c, w, t, d); };
                         })(parsed, course, currentWeek, time, day + 1);
@@ -1694,7 +1703,8 @@
 
         function renderTodayClasses() {
             const listEl = document.getElementById('todayClassesList');
-            if (!listEl) return;
+            const listEl2 = document.getElementById('todayClassesList2');
+            if (!listEl && !listEl2) return;
 
             let weekData = courseData['week' + currentWeek];
             const dates = weekData.dates;
@@ -1730,14 +1740,19 @@
             }
 
             if (targetDayIndex === -1) {
-                listEl.innerHTML = '<div class="today-empty">该日期没有课程</div>';
+                if (listEl) listEl.innerHTML = '<div class="today-empty">该日期没有课程</div>';
+                if (listEl2) listEl2.innerHTML = '<div class="today-empty">该日期没有课程</div>';
                 return;
             }
 
             // 更新日期标签
             const dateLabel = document.getElementById('todayDateLabel');
+            const dateLabel2 = document.getElementById('todayDateLabel2');
             if (dateLabel) {
                 dateLabel.textContent = `${targetMonth}月${targetDay}日`;
+            }
+            if (dateLabel2) {
+                dateLabel2.textContent = `${targetMonth}月${targetDay}日`;
             }
 
             const timeSlots = ['01-02', '03-04', '05-06', '07-08', '09-10', '11-12'];
@@ -1765,9 +1780,11 @@
             }
 
             if (!hasClasses) {
-                listEl.innerHTML = '<div class="today-empty">该日期没有课程</div>';
+                if (listEl) listEl.innerHTML = '<div class="today-empty">该日期没有课程</div>';
+                if (listEl2) listEl2.innerHTML = '<div class="today-empty">该日期没有课程</div>';
             } else {
-                listEl.innerHTML = detailsHtml;
+                if (listEl) listEl.innerHTML = detailsHtml;
+                if (listEl2) listEl2.innerHTML = detailsHtml;
             }
         }
 
