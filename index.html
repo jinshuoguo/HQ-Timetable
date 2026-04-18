@@ -36,7 +36,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            padding: env(safe-area-inset-top) 6px env(safe-area-inset-bottom);
+            padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
             background-attachment: fixed;
             overflow: hidden;
         }
@@ -216,7 +216,6 @@
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            margin: 0 auto;
         }
 
         .current-date-label {
@@ -249,8 +248,8 @@
         }
 
         .nav-btn {
-            width: 30px;
-            height: 30px;
+            width: 28px;
+            height: 28px;
             border-radius: 50%;
             border: var(--glass-border);
             background: rgba(255, 255, 255, 0.6);
@@ -350,7 +349,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: 14px;
             transition: all 0.3s ease;
             box-shadow: var(--shadow-sm);
         }
@@ -447,8 +446,8 @@
         }
 
         .today-classes {
-            margin: 10px 0px 0;
-            padding: 12px;
+            padding: 14px;
+            margin: 12px 10px 0;
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -458,8 +457,7 @@
 
         [data-theme="dark"] .today-classes {
             background: rgba(255, 255, 255, 0.1);
-            margin: 10px 0px 0;
-            padding: 12px;
+            margin: 6px 4px 0;
         }
 
         [data-theme="dark"] .today-info {
@@ -469,6 +467,35 @@
 
         [data-theme="dark"] .today-location {
             font-size: 9px;
+            color: #a0a0a0;
+        }
+
+        [data-theme="dark"] .today-detail-item {
+            padding: 12px 14px;
+        }
+
+        [data-theme="dark"] .today-detail-time {
+            font-size: 8px;
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .today-detail-name {
+            font-size: 11px;
+            color: #f0f0f0;
+        }
+
+        [data-theme="dark"] .today-detail-info {
+            font-size: 9px;
+            color: #a0a0a0;
+        }
+
+        [data-theme="dark"] .today-detail-location {
+            font-size: 8px;
+            color: #a0a0a0;
+        }
+
+        [data-theme="dark"] .today-empty {
+            font-size: 10px;
             color: #a0a0a0;
         }
 
@@ -510,7 +537,6 @@
             font-weight: 700;
             color: var(--accent-color);
             margin-bottom: 5px;
-            margin-left: 8px;
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
@@ -558,7 +584,7 @@
 
         .today-info {
             flex: 1;
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 600;
             color: var(--text-primary);
         }
@@ -568,7 +594,7 @@
         }
 
         .today-location {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--text-secondary);
             margin-left: 4px;
         }
@@ -592,35 +618,57 @@
         }
 
         .today-detail-time {
-            font-size: 8px;
+            font-size: 7px;
             font-weight: 700;
             color: var(--accent-color);
             margin-bottom: 2px;
             letter-spacing: 0.05em;
         }
 
+        [data-theme="dark"] .today-detail-time {
+            color: #60a5fa;
+        }
+
+        [data-theme="dark"] .today-detail-time {
+            color: #60a5fa;
+            letter-spacing: 0.05em;
+        }
+
         .today-detail-name {
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 2px;
         }
 
+        [data-theme="dark"] .today-detail-name {
+            color: #f0f0f0;
+        }
+
         .today-detail-info {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--text-secondary);
             margin-bottom: 2px;
         }
 
+        [data-theme="dark"] .today-detail-info {
+            color: #a0a0a0;
+        }
+
         .today-detail-location {
-            font-size: 8px;
+            font-size: 7px;
             color: var(--text-secondary);
+            opacity: 0.6;
+        }
+
+        [data-theme="dark"] .today-detail-location {
+            color: #a0a0a0;
             opacity: 0.6;
         }
 
         .today-empty {
             text-align: center;
-            font-size: 10px;
+            font-size: 9px;
             color: var(--text-secondary);
             padding: 20px 0;
             background: linear-gradient(135deg, #f9fafb 0%, #f0f2f5 100%);
@@ -784,14 +832,15 @@
         }
 
         .class-cell {
-            min-height: 44px;
-            padding: 6px 4px;
+            min-height: 52px;
+            padding: 8px 4px;
             cursor: pointer;
             transition: all 0.3s ease;
             position: relative;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            align-items: center;
             border-radius: 10px;
             background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
             border: 1px solid rgba(0, 0, 0, 0.06);
@@ -835,14 +884,16 @@
         }
 
         .class-name {
-            font-size: 10px;
+            font-size: 8px;
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 2px;
-            line-height: 1.2;
-            overflow: visible;
-            -webkit-line-clamp: none;
-            -webkit-box-orient: horizontal;
+            line-height: 1.3;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 2.6em;
         }
 
         .class-info {
@@ -875,8 +926,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-top: 8px;
-            margin-bottom: 0;
+            margin-bottom: 16px;
             padding: 0 12px;
         }
 
@@ -884,7 +934,7 @@
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 4px;
-            margin: 6px 10px 0;
+            margin: 10px 10px 0;
             padding: 0 2px;
         }
 
@@ -905,25 +955,17 @@
         }
 
         .month-title {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.5);
-            padding: 4px 12px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: 600;
-            -webkit-background-clip: none;
-            -webkit-text-fill-color: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2c2c2e 0%, #1c1c1e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         [data-theme="dark"] .month-title {
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 4px 12px;
-            border-radius: 10px;
-            font-size: 10px;
-            font-weight: 600;
-            -webkit-background-clip: none;
-            -webkit-text-fill-color: inherit;
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .month-grid {
@@ -1115,187 +1157,13 @@
             border-color: rgba(255, 255, 255, 0.1);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-
-        .modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(6px);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 24px;
-            width: 100%;
-            max-width: 390px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            transform: translateY(20px) scale(0.95);
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-
-        .modal.show .modal-content {
-            transform: translateY(0) scale(1);
-        }
-
-        .modal-header {
-            padding: 20px 20px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .modal-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        [data-theme="dark"] .modal-title {
-            color: #f0f0f0;
-        }
-
-        .close-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
-            font-size: 16px;
-        }
-
-        .close-btn:hover {
-            background: rgba(0, 0, 0, 0.1);
-            transform: scale(1.08);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        [data-theme="dark"] .close-btn {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #f0f0f0;
-        }
-
-        [data-theme="dark"] .close-btn:hover {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .close-btn::before,
-        .close-btn::after {
-            content: '';
-            position: absolute;
-            width: 14px;
-            height: 2px;
-            background: currentColor;
-            border-radius: 2px;
-            transition: all 0.2s ease;
-        }
-
-        .close-btn:hover::before {
-            transform: rotate(45deg) translate(2px, 0);
-        }
-
-        .close-btn:hover::after {
-            transform: rotate(-45deg) translate(-2px, 0);
-        }
-
-        .close-btn::before {
-            transform: rotate(45deg);
-        }
-
-        .close-btn::after {
-            transform: rotate(-45deg);
-        }
-
-        .modal-body {
-            padding: 18px 16px;
-        }
-
-        .detail-item {
-            margin-bottom: 18px;
-            padding-bottom: 14px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        [data-theme="dark"] .detail-item {
-            border-bottom-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .detail-label {
-            font-size: 8px;
-            color: var(--text-secondary);
-            margin-bottom: 5px;
-            letter-spacing: 0.06em;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .detail-value {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-
-        [data-theme="dark"] .detail-value {
-            color: #ffffff;
-        }
-
-        .modal-footer {
-            padding: 14px 20px 20px;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.02) 0%, transparent 100%);
-        }
-
-        .close-modal-btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: 16px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
-        }
-
-        .close-modal-btn:hover {
-            box-shadow: 0 10px 28px rgba(0, 122, 255, 0.4);
-        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="app-header">
             <div class="header-content">
-                <div class="logo" id="logo" onclick="handleLogoClick()">
+                <div class="logo" onclick="handleLogoClick()">
                     <span>HQ</span>
                     <span class="logo-sub">Timetable</span>
                 </div>
@@ -1397,20 +1265,6 @@
     <!-- 浮动跳转今日按钮 -->
     <button class="jump-today-float" id="jumpTodayBtn" onclick="jumpToToday()">跳转今日课程</button>
 
-    <div class="modal" id="classModal" onclick="if(event.target === this) closeModal();">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">课程详情</h2>
-                <button class="close-btn" onclick="closeModal()"></button>
-            </div>
-            <div class="modal-body" id="modalBody"></div>
-            <div class="modal-footer">
-                <button class="close-modal-btn" onclick="closeModal()">关闭</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 彩蛋：连续点击logo弹出的信 -->
     <div class="logo-clicks" id="logoClicks" onclick="if(event.target === this) closeEasterEgg();">
         <div class="easter-egg">
             <h2>给HQ的信</h2>
@@ -1586,7 +1440,7 @@
         let currentMonthYear = new Date();
         let currentView = 'week';
         let selectedDate = null; // 记录用户选择的日期
-        let logoClicks = 0; // 记录logo点击次数
+        let logoClicks = 0;
 
         function getCurrentWeek() {
             const today = new Date();
@@ -1609,31 +1463,6 @@
             if (currentMonth === 6 && currentDay >= 1 && currentDay <= 7) return 14;
             if (currentMonth === 6 && currentDay >= 8 && currentDay <= 14) return 15;
             return 1;
-        }
-
-        function handleLogoClick() {
-            logoClicks++;
-            if (logoClicks === 5) {
-                // 连续点击5次，显示彩蛋
-                document.getElementById('logoClicks').classList.add('show');
-                logoClicks = 0; // 重置计数器
-                // 清除之前的点击计时
-                if (window.logoClickTimer) {
-                    clearTimeout(window.logoClickTimer);
-                }
-            } else {
-                // 设置计时器，如果3秒内没有继续点击则重置
-                if (window.logoClickTimer) {
-                    clearTimeout(window.logoClickTimer);
-                }
-                window.logoClickTimer = setTimeout(() => {
-                    logoClicks = 0;
-                }, 3000);
-            }
-        }
-
-        function closeEasterEgg() {
-            document.getElementById('logoClicks').classList.remove('show');
         }
 
         function parseCourse(course) {
@@ -1806,18 +1635,22 @@
                     cell.dataset.time = time;
                     cell.dataset.day = day + 1;
 
+                    // 获取被点击格子的日期信息
+                    const dateStr = dates[day];
+                    const dateMatch = dateStr.match(/(\d+)月(\d+)日/);
+                    const clickMonth = dateMatch ? parseInt(dateMatch[1]) : currentMonth;
+                    const clickDay = dateMatch ? parseInt(dateMatch[2]) : currentDay;
+
+                    // 所有格子点击都跳转到对应日期，传入日期信息
+                    cell.onclick = (function(d, m, dayNum) {
+                        return function() { jumpToDay(d, m, dayNum); };
+                    })(day + 1, clickMonth, clickDay);
+
                     if (!course || course === '-') {
                         cell.classList.add('empty');
-                        // 空白课程点击跳转到对应日期
-                        cell.onclick = (function(d) {
-                            return function() { jumpToDay(d); };
-                        })(day + 1);
                     } else {
                         const parsed = parseCourse(course);
                         cell.innerHTML = '<div class="class-name">' + parsed.name + '</div>';
-                        cell.onclick = (function(p, c, w, t, d) {
-                            return function() { openModal(p, c, w, t, d); };
-                        })(parsed, course, currentWeek, time, day + 1);
                     }
                     grid.appendChild(cell);
                 }
@@ -2071,6 +1904,55 @@
             renderWeek();
         }
 
+        function jumpToDay(dayIndex, month, day) {
+            const dayPrefixes = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+            const prefix = dayPrefixes[dayIndex - 1];
+
+            // 使用传入的日期查找是第几周
+            for (let w = 1; w <= 15; w++) {
+                const weekData = courseData['week' + w];
+                const dates = weekData.dates;
+                const dateStr = dates[dayIndex - 1];
+                const match = dateStr.match(/(\d+)月(\d+)日/);
+
+                if (match) {
+                    const m = parseInt(match[1]);
+                    const d = parseInt(match[2]);
+                    // 匹配传入的日期
+                    if (m === month && d === day) {
+                        selectedDate = new Date(2026, m - 1, d);
+                        currentWeek = w;
+
+                        updateWeekInfo();
+                        renderWeek();
+
+                        document.querySelectorAll('.header-cell').forEach(h => h.classList.remove('selected-day'));
+                        document.querySelectorAll('.class-cell').forEach(c => c.classList.remove('selected'));
+
+                        const currentHeader = document.getElementById(prefix + 'Header');
+                        if (currentHeader) currentHeader.classList.add('selected-day');
+
+                        const grid = document.getElementById('timetableGrid');
+                        const cells = grid.getElementsByClassName('class-cell');
+                        for (let c = 0; c < cells.length; c++) {
+                            if (parseInt(cells[c].dataset.day) === dayIndex) {
+                                cells[c].classList.add('selected');
+                            }
+                        }
+
+                        renderTodayClasses();
+                        updateJumpButton();
+
+                        const todayClassesEl = document.getElementById('todayClasses');
+                        if (todayClassesEl) {
+                            todayClassesEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+
         function jumpToToday() {
             const today = new Date();
             // 创建新日期对象避免引用问题
@@ -2140,56 +2022,6 @@
             }
         }
 
-        function jumpToDay(dayIndex) {
-            const dayPrefixes = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
-            const prefix = dayPrefixes[dayIndex - 1];
-
-            // 遍历所有周次，找到包含该天的日期
-            for (let w = 1; w <= 15; w++) {
-                const weekData = courseData['week' + w];
-                const dates = weekData.dates;
-                const dateStr = dates[dayIndex - 1];
-                const match = dateStr.match(/(\d+)月(\d+)日/);
-
-                if (match) {
-                    const m = parseInt(match[1]);
-                    const d = parseInt(match[2]);
-                    selectedDate = new Date(2026, m - 1, d);
-                    currentWeek = w;
-
-                    updateWeekInfo();
-                    renderWeek();
-
-                    // 清除之前的选中状态
-                    document.querySelectorAll('.header-cell').forEach(h => h.classList.remove('selected-day'));
-                    document.querySelectorAll('.class-cell').forEach(c => c.classList.remove('selected'));
-
-                    // 高亮当前列
-                    const currentHeader = document.getElementById(prefix + 'Header');
-                    if (currentHeader) currentHeader.classList.add('selected-day');
-
-                    const grid = document.getElementById('timetableGrid');
-                    const cells = grid.getElementsByClassName('class-cell');
-                    for (let c = 0; c < cells.length; c++) {
-                        if (parseInt(cells[c].dataset.day) === dayIndex) {
-                            cells[c].classList.add('selected');
-                        }
-                    }
-
-                    // 更新今日课程
-                    renderTodayClasses();
-                    updateJumpButton();
-
-                    // 滚动到今日课程区域
-                    const todayClassesEl = document.getElementById('todayClasses');
-                    if (todayClassesEl) {
-                        todayClassesEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }
-                    break;
-                }
-            }
-        }
-
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
@@ -2197,28 +2029,31 @@
             localStorage.setItem('theme', newTheme);
         }
 
+        function handleLogoClick() {
+            logoClicks++;
+            if (logoClicks === 5) {
+                document.getElementById('logoClicks').classList.add('show');
+                logoClicks = 0;
+                if (window.logoClickTimer) {
+                    clearTimeout(window.logoClickTimer);
+                }
+            } else {
+                if (window.logoClickTimer) {
+                    clearTimeout(window.logoClickTimer);
+                }
+                window.logoClickTimer = setTimeout(() => {
+                    logoClicks = 0;
+                }, 3000);
+            }
+        }
+
+        function closeEasterEgg() {
+            document.getElementById('logoClicks').classList.remove('show');
+        }
+
         function initTheme() {
             const savedTheme = localStorage.getItem('theme') || 'light';
             document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-
-        function openModal(course, original, week, time, day) {
-            const dayNames = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
-            const timeNames = { '01-02': '第1-2节', '03-04': '第3-4节', '05-06': '第5-6节', '07-08': '第7-8节', '09-10': '第9-10节', '11-12': '第11-12节' };
-
-            const details = '<div class="detail-item"><div class="detail-label">课程名称</div><div class="detail-value">' + course.name + '</div></div>' +
-                '<div class="detail-item"><div class="detail-label">教师</div><div class="detail-value">' + (course.info || '-') + '</div></div>' +
-                '<div class="detail-item"><div class="detail-label">地点</div><div class="detail-value">' + (course.location || '-') + '</div></div>' +
-                '<div class="detail-item"><div class="detail-label">时间</div><div class="detail-value">' + (timeNames[time] || time) + ' ' + dayNames[day - 1] + '</div></div>' +
-                '<div class="detail-item"><div class="detail-label">周次</div><div class="detail-value">第 ' + week + ' 周</div></div>';
-
-            document.getElementById('modalTitle').textContent = '课程详情';
-            document.getElementById('modalBody').innerHTML = details;
-            document.getElementById('classModal').classList.add('show');
-        }
-
-        function closeModal() {
-            document.getElementById('classModal').classList.remove('show');
         }
 
         // 计算上课时间
