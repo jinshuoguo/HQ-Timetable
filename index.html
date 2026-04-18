@@ -392,7 +392,7 @@
         .calendar-wrapper {
             flex: 1;
             position: relative;
-            padding: 0 12px env(safe-area-inset-bottom);
+            padding: 0 6px env(safe-area-inset-bottom);
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
         }
@@ -446,8 +446,8 @@
         }
 
         .today-classes {
-            padding: 14px;
-            margin: 12px 10px 0;
+            padding: 12px;
+            margin: 12px 4px 0;
             background: rgba(255, 255, 255, 0.4);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -456,8 +456,9 @@
         }
 
         [data-theme="dark"] .today-classes {
+            padding: 12px;
+            margin: 12px 4px 0;
             background: rgba(255, 255, 255, 0.1);
-            margin: 6px 4px 0;
         }
 
         [data-theme="dark"] .today-info {
@@ -471,31 +472,31 @@
         }
 
         [data-theme="dark"] .today-detail-item {
-            padding: 12px 14px;
+            padding: 12px 10px;
         }
 
         [data-theme="dark"] .today-detail-time {
-            font-size: 8px;
+            font-size: 9px;
             color: #60a5fa;
         }
 
         [data-theme="dark"] .today-detail-name {
-            font-size: 11px;
+            font-size: 12px;
             color: #f0f0f0;
         }
 
         [data-theme="dark"] .today-detail-info {
-            font-size: 9px;
+            font-size: 10px;
             color: #a0a0a0;
         }
 
         [data-theme="dark"] .today-detail-location {
-            font-size: 8px;
+            font-size: 9px;
             color: #a0a0a0;
         }
 
         [data-theme="dark"] .today-empty {
-            font-size: 10px;
+            font-size: 12px;
             color: #a0a0a0;
         }
 
@@ -536,24 +537,34 @@
             font-size: 10px;
             font-weight: 700;
             color: var(--accent-color);
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
+        [data-theme="dark"] .today-title {
+            font-size: 10px;
+            color: #60a5fa;
+        }
+
         .today-date-label {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--text-secondary);
             text-align: center;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
             font-weight: 500;
+        }
+
+        [data-theme="dark"] .today-date-label {
+            font-size: 8px;
+            color: #a0a0a0;
         }
 
         .today-class-item {
             display: flex;
             align-items: center;
-            margin-bottom: 6px;
-            padding: 6px 10px;
+            margin-bottom: 5px;
+            padding: 5px 8px;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(6px);
             -webkit-backdrop-filter: blur(6px);
@@ -562,6 +573,7 @@
         }
 
         [data-theme="dark"] .today-class-item {
+            padding: 5px 8px;
             background: rgba(255, 255, 255, 0.08);
             border-color: rgba(255, 255, 255, 0.08);
         }
@@ -590,6 +602,7 @@
         }
 
         [data-theme="dark"] .today-info {
+            font-size: 9px;
             color: #f0f0f0;
         }
 
@@ -600,13 +613,14 @@
         }
 
         [data-theme="dark"] .today-location {
+            font-size: 8px;
             color: #a0a0a0;
         }
 
         .today-detail-item {
             background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
             margin-bottom: 8px;
-            padding: 10px 12px;
+            padding: 14px 12px;
             border-radius: 10px;
             border: 1px solid rgba(0, 0, 0, 0.05);
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
@@ -618,7 +632,7 @@
         }
 
         .today-detail-time {
-            font-size: 7px;
+            font-size: 9px;
             font-weight: 700;
             color: var(--accent-color);
             margin-bottom: 2px;
@@ -626,42 +640,41 @@
         }
 
         [data-theme="dark"] .today-detail-time {
+            font-size: 9px;
             color: #60a5fa;
-        }
-
-        [data-theme="dark"] .today-detail-time {
-            color: #60a5fa;
-            letter-spacing: 0.05em;
         }
 
         .today-detail-name {
-            font-size: 9px;
+            font-size: 12px;
             font-weight: 700;
             color: var(--text-primary);
             margin-bottom: 2px;
         }
 
         [data-theme="dark"] .today-detail-name {
+            font-size: 12px;
             color: #f0f0f0;
         }
 
         .today-detail-info {
-            font-size: 8px;
+            font-size: 10px;
             color: var(--text-secondary);
             margin-bottom: 2px;
         }
 
         [data-theme="dark"] .today-detail-info {
+            font-size: 10px;
             color: #a0a0a0;
         }
 
         .today-detail-location {
-            font-size: 7px;
+            font-size: 9px;
             color: var(--text-secondary);
             opacity: 0.6;
         }
 
         [data-theme="dark"] .today-detail-location {
+            font-size: 9px;
             color: #a0a0a0;
             opacity: 0.6;
         }
@@ -971,7 +984,7 @@
         .month-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
-            gap: 10px;
+            gap: 5px;
             margin-top: 12px;
             padding: 12px 12px;
         }
