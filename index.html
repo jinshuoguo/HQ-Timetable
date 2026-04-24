@@ -45,9 +45,9 @@
             font-family: "SF Pro Display", "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
             min-height: 100vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: calc(env(safe-area-inset-top) + 14px) 14px calc(env(safe-area-inset-bottom) + 14px);
+            align-items: stretch;
+            justify-content: stretch;
+            padding: 0;
             background:
                 radial-gradient(circle at top left, rgba(0, 122, 255, 0.18), transparent 34%),
                 radial-gradient(circle at top right, rgba(255, 255, 255, 0.75), transparent 42%),
@@ -85,17 +85,17 @@
 
         .container {
             position: relative;
-            width: min(100%, 430px);
-            min-height: 100%;
-            max-height: 100%;
+            width: 100%;
+            min-height: 100vh;
+            max-height: 100vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.82) 0%, rgba(247, 249, 252, 0.74) 100%);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, rgba(247, 249, 252, 0.62) 100%);
             backdrop-filter: blur(28px) saturate(150%);
             -webkit-backdrop-filter: blur(28px) saturate(150%);
-            border: 1px solid var(--border-strong);
-            box-shadow: var(--shadow-lg);
+            border: 0;
+            box-shadow: none;
             animation: page-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
@@ -107,20 +107,13 @@
             pointer-events: none;
         }
 
-        @media (min-width: 460px) {
-            .container {
-                min-height: min(920px, calc(100vh - 28px));
-                border-radius: 34px;
-            }
-        }
-
         .app-header {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 14px;
-            padding: 26px 20px 14px;
+            padding: calc(env(safe-area-inset-top) + 20px) 20px 14px;
             z-index: 1;
         }
 
@@ -512,6 +505,15 @@
             -webkit-line-clamp: 2;
             overflow: hidden;
             word-break: break-all;
+        }
+
+        .class-name.compact {
+            font-size: 9px;
+        }
+
+        .class-name.tight {
+            font-size: 8px;
+            line-height: 1.05;
         }
 
         .class-info,
@@ -912,7 +914,7 @@
 
         @media (max-width: 420px) {
             .app-header {
-                padding: 22px 16px 12px;
+                padding: calc(env(safe-area-inset-top) + 16px) 16px 12px;
             }
 
             .view-switcher {
@@ -1294,9 +1296,11 @@
             return { name: parts[0], info: parts[1] || '', location: location };
         }
 
-        function shortenCourseName(name) {
+        function getCourseNameClass(name) {
             if (!name) return '';
-            return name.length > 6 ? name.slice(0, 6) : name;
+            if (name.length >= 9) return 'tight';
+            if (name.length >= 7) return 'compact';
+            return '';
         }
 
         function renderWeek() {
@@ -1477,7 +1481,8 @@
                         cell.classList.add('empty');
                     } else {
                         const parsed = parseCourse(course);
-                        cell.innerHTML = '<div class="class-name">' + shortenCourseName(parsed.name) + '</div>';
+                        const nameClass = getCourseNameClass(parsed.name);
+                        cell.innerHTML = '<div class="class-name' + (nameClass ? ' ' + nameClass : '') + '">' + parsed.name + '</div>';
                     }
                     grid.appendChild(cell);
                 }
